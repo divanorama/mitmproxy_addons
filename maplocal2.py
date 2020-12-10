@@ -6,6 +6,15 @@ from pathlib import Path
 from mitmproxy import ctx, exceptions, http, version
 from mitmproxy.script import concurrent
 
+# ddon similar to built-in MapLocal with following notable differences
+# - use @concurrent to avoid reading files in event loop thread
+# - no guessing of mime-type (could be re-added, ideally not at response time)
+# - option to respond with 404 on unknown URLs
+# - exact match on urls via dict lookup rather than regex matching against every mapping
+# - only GET and HEAD support for now, and no support for flow filters
+# - only support for single files per mapping
+# - ability to specify mapping list via a file
+
 class MapLocal2Spec(typing.NamedTuple):
   url: str
   local_path: Path
