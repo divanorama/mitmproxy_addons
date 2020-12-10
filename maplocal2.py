@@ -6,7 +6,7 @@ from pathlib import Path
 from mitmproxy import ctx, exceptions, http, version
 from mitmproxy.script import concurrent
 
-# ddon similar to built-in MapLocal with following notable differences
+# Addon similar to built-in MapLocal with following notable differences
 # - use @concurrent to avoid reading files in event loop thread
 # - no guessing of mime-type (could be re-added, ideally not at response time)
 # - option to respond with 404 on unknown URLs
